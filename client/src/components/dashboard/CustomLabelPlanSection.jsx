@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Check } from 'lucide-react';
+import { API_BASE_URL } from '../../config/api';
 
 export const CustomLabelPlanSection = ({ user }) => {
   const [purchasedPlan, setPurchasedPlan] = useState(null);
@@ -8,7 +9,7 @@ export const CustomLabelPlanSection = ({ user }) => {
   const handleBuy = async (planId, planName) => {
     setLoadingPlan(planId);
     try {
-      const res = await fetch('http://localhost:5000/api/pricing/purchase-label', {
+      const res = await fetch(`${API_BASE_URL}/api/pricing/purchase-label`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

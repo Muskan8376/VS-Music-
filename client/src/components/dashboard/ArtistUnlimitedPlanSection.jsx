@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Minus, Check } from 'lucide-react';
 import TaxAccountInfoModal from './TaxAccountInfoModal';
+import { API_BASE_URL } from '../../config/api';
 
 export const ArtistUnlimitedPlanSection = ({ user, onPurchased, onInitiateCheckout }) => {
   const [artistsCount, setArtistsCount] = useState(1);
@@ -75,7 +76,7 @@ export const ArtistUnlimitedPlanSection = ({ user, onPurchased, onInitiateChecko
 
     // Direct fallback purchase simulation
     setLoading(true);
-    fetch('http://localhost:5000/api/pricing/purchase-artist', {
+    fetch(`${API_BASE_URL}/api/pricing/purchase-artist`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

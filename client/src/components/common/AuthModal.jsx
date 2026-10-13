@@ -3,6 +3,7 @@ import Modal from './Modal';
 import SearchableSelect from './SearchableSelect';
 import { countries, statesByCountry, citiesByState } from '../../data/locationsData';
 import { Eye, EyeOff, User, Music, Mic, ChevronDown, Shield } from 'lucide-react';
+import { API_BASE_URL } from '../../config/api';
 
 export default function AuthModal({ isOpen, onClose, mode = 'register', onSwitchMode, onAuthSuccess }) {
   // Passwords visibility toggle
@@ -118,7 +119,7 @@ export default function AuthModal({ isOpen, onClose, mode = 'register', onSwitch
     if (!formData.email || !formData.password) return;
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: formData.email, password: formData.password })
@@ -157,7 +158,7 @@ export default function AuthModal({ isOpen, onClose, mode = 'register', onSwitch
     };
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/register', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -227,7 +228,7 @@ export default function AuthModal({ isOpen, onClose, mode = 'register', onSwitch
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/verify-otp', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/verify-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: formData.email, otp: enteredCode })
@@ -272,7 +273,7 @@ export default function AuthModal({ isOpen, onClose, mode = 'register', onSwitch
   // Resend OTP
   const handleResendCode = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/auth/resend-otp', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/resend-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: formData.email })

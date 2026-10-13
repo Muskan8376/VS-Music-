@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle2, Plus, Minus, Sparkles, Check } from 'lucide-react';
+import { API_BASE_URL } from '../../config/api';
 
 export const CreditsCalculatorCard = ({ user, onCreditsPurchased, onInitiateCheckout }) => {
   const [credits, setCredits] = useState(1);
@@ -67,7 +68,7 @@ export const CreditsCalculatorCard = ({ user, onCreditsPurchased, onInitiateChec
 
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/pricing/purchase', {
+      const res = await fetch(`${API_BASE_URL}/api/pricing/purchase`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

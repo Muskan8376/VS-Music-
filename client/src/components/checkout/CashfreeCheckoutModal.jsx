@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { CashfreePaymentViews } from './CashfreePaymentViews';
 import { CashfreeReceiptView } from './CashfreeReceiptView';
+import { API_BASE_URL } from '../../config/api';
 
 /**
  * CashfreeCheckoutModal
@@ -43,7 +44,7 @@ export const CashfreeCheckoutModal = ({
       setReceiptData(null);
 
       // Create backend order
-      fetch('http://localhost:5000/api/payment/create-order', {
+      fetch(`${API_BASE_URL}/api/payment/create-order`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -83,7 +84,7 @@ export const CashfreeCheckoutModal = ({
     });
 
     try {
-      const res = await fetch('http://localhost:5000/api/payment/verify', {
+      const res = await fetch(`${API_BASE_URL}/api/payment/verify`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

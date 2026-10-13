@@ -8,6 +8,7 @@ import CreditsCalculatorCard from './CreditsCalculatorCard';
 import CustomLabelPlanSection from './CustomLabelPlanSection';
 import ArtistUnlimitedPlanSection from './ArtistUnlimitedPlanSection';
 import CashfreeCheckoutModal from '../checkout/CashfreeCheckoutModal';
+import { API_BASE_URL } from '../../config/api';
 
 export const DashboardLayout = ({
   user,
@@ -52,8 +53,8 @@ export const DashboardLayout = ({
     const fetchData = async () => {
       try {
         const [plansRes, compRes] = await Promise.all([
-          fetch('http://localhost:5000/api/pricing/plans').then((r) => r.json()),
-          fetch('http://localhost:5000/api/pricing/comparison').then((r) => r.json())
+          fetch(`${API_BASE_URL}/api/pricing/plans`).then((r) => r.json()),
+          fetch(`${API_BASE_URL}/api/pricing/comparison`).then((r) => r.json())
         ]);
         if (plansRes.success) setPlans(plansRes.data);
         if (compRes.success) setComparisonData(compRes.data);
