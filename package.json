@@ -1,0 +1,14 @@
+{
+  "name": "vusic-records",
+  "version": "1.0.0",
+  "description": "Vusic Records - Indian & Global Music Distribution Platform (MERN Stack)",
+  "scripts": {
+    "dev:client": "npm --prefix client run dev",
+    "build:client": "npm --prefix client run build",
+    "dev:server": "node server/server.js",
+    "start": "node server/server.js"
+  },
+  "keywords": ["music", "distribution", "mern", "react", "express"],
+  "author": "Antigravity",
+  "license": "ISC"
+}
